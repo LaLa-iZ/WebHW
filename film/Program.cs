@@ -159,6 +159,108 @@ namespace film
                                     {
                                         Console.WriteLine("What would you do?{0}If you would like to Add Company, enter A{0}If you would like to Change Company, enter C{0}If you would like to Delete Company, enter D{0}If you would like to Get All Companies, enter GetAll{0}If you would like to Get Company By Id, enter GetBy{0}If you whant to return, enter return ", Environment.NewLine);
                                         method = Console.ReadLine();
+                                        string id;
+                                        switch (method)
+                                        {
+                                            case "A":
+                                                Console.WriteLine("Write Company id: ");
+                                                id = Console.ReadLine();
+                                                Console.WriteLine("Write Company's name: ");
+                                                string name = Console.ReadLine();
+                                                try
+                                                {
+                                                    int i = Convert.ToInt32(id);
+                                                    CompanyManager.Add(i, name);
+                                                    Console.WriteLine();
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Something went wrong.Try Again.");
+                                                }
+                                                break;
+
+                                            case "C":
+                                                Console.WriteLine("If you whant to change id, enter id{0}If you whant to change name, enter name{0}", Environment.NewLine);
+                                                string change = Console.ReadLine();
+                                                switch (change)
+                                                {
+                                                    case "id":
+                                                        Console.Write("Write Company's id: ");
+                                                        id = Console.ReadLine();
+                                                        Console.Write("Write new Company's id: ");
+                                                        string newid = Console.ReadLine();
+                                                        try
+                                                        {
+                                                            int i = Convert.ToInt32(id);
+                                                            int newi = Convert.ToInt32(newid);
+                                                            CompanyManager.Change(i, newi);
+                                                            Console.WriteLine();
+                                                        }
+                                                        catch
+                                                        {
+                                                            Console.WriteLine("Something went wrong.Try Again.");
+                                                        }
+                                                        break;
+                                                    case "name":
+                                                        Console.Write("Write Company's id: ");
+                                                        id = Console.ReadLine();
+                                                        Console.Write("Write new Company's name: ");
+                                                        string newname = Console.ReadLine();
+                                                        try
+                                                        {
+                                                            int i = Convert.ToInt32(id);
+                                                            CompanyManager.ChangeName(i, newname);
+                                                            Console.WriteLine();
+                                                        }
+                                                        catch
+                                                        {
+                                                            Console.WriteLine("Something went wrong.Try Again.");
+                                                        }
+                                                        break;
+                                                    default:
+                                                        Console.WriteLine("Something went wrong.Try Again.");
+                                                       break;
+                                                }
+                                                break;
+                                                
+                                            case "D":
+                                                Console.Write("Write Company's id: ");
+                                                id = Console.ReadLine();
+                                                try
+                                                {
+                                                    int i = Convert.ToInt32(id);
+                                                    CompanyManager.Delete(i);
+                                                    Console.WriteLine();
+                                                }
+                                                catch 
+                                                {
+                                                    Console.WriteLine("Something went wrong.Try Again.");
+                                                }
+                                                break;
+
+                                            case "GetAll":
+                                                CompanyManager.All();
+                                                break;
+
+                                            case "GetBy":
+                                                Console.Write("Write Company's id: ");
+                                                id = Console.ReadLine();
+                                                try
+                                                {
+                                                    int i = Convert.ToInt32(id);
+                                                    CompanyManager.GetBy(i);
+                                                    Console.WriteLine();
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Something went wrong.Try Again.");
+                                                }
+                                                break;
+
+                                            default:
+                                                Console.WriteLine("Something went wrong.Try Again.");
+                                                break;
+                                        }
                                     }
                                     break;
                                 case "G":

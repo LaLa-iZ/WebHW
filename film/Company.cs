@@ -4,7 +4,12 @@ using System.Text;
 
 namespace film
 {
-    class Company
+    class Company: Parent
     {
+        public Company(int i, string n)
+        {
+            id = i;
+            name = n;
+        }
     }
 }
