@@ -92,7 +92,7 @@ namespace film
         {
             for (int i = 0; i < films.Count; ++i)
             {
-                Console.WriteLine($"{films[i].id}, {films[i].name}, {films[i].description}, {films[i].realisedate}, {ProducerManager.producers.Find(x => x.id == films[i].producer_id).surname} {ProducerManager.producers.Find(x => x.id == films[i].producer_id).name}, {CompanyManager.companies.Find(x => x.id == films[i].company_id).name}, {GenreManager.genres.Find(x => x.id == films[i].genre_id).name}");
+                Console.WriteLine($"{i+1}) {films[i].id}, {films[i].name}, {films[i].description}, {films[i].realisedate}, {ProducerManager.producers.Find(x => x.id == films[i].producer_id).surname} {ProducerManager.producers.Find(x => x.id == films[i].producer_id).name}, {CompanyManager.companies.Find(x => x.id == films[i].company_id).name}, {GenreManager.genres.Find(x => x.id == films[i].genre_id).name}");
             }
         }
     }

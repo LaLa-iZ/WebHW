@@ -147,6 +147,10 @@ namespace film
                                                 }
                                                 break;
 
+                                            case "return":
+                                                Console.WriteLine();
+                                                break;
+
                                             default:
                                                 Console.WriteLine("Something went wrong.Try Again.");
                                                 break;
@@ -255,6 +259,10 @@ namespace film
                                                 {
                                                     Console.WriteLine("Something went wrong.Try Again.");
                                                 }
+                                                break;
+
+                                            case "return":
+                                                Console.WriteLine();
                                                 break;
 
                                             default:
@@ -368,6 +376,10 @@ namespace film
                                                     Console.WriteLine("Something went wrong.Try Again.");
                                                     Console.WriteLine();
                                                 }
+                                                break;
+
+                                            case "return":
+                                                Console.WriteLine();
                                                 break;
 
                                             default:
@@ -505,6 +517,9 @@ namespace film
                                                     Console.WriteLine();
                                                 }
                                                 break;
+                                            case "return":
+                                                Console.WriteLine();
+                                                break;
 
                                             default:
                                                 Console.WriteLine("Something went wrong.Try Again.");
@@ -525,10 +540,106 @@ namespace film
                         }
                         break;
                     case "S":
-                        Console.WriteLine("Seacher?");
+                        string search = "nothing";
+                        while(search != "return")
+                        {
+                            Console.WriteLine("If you whant to search film by id, enter id{0}If you whant to search film by realise date, enter date{0}If you whant to search film by producer, enter producer{0}If you whant to search film by genre, enter genre{0}If you whant to search film by company, enter company{0}", Environment.NewLine);
+                            search = Console.ReadLine();
+
+                            switch (search)
+                            {
+                                case "id":
+                                    Console.WriteLine("Write film id: ");
+                                    string fid = Console.ReadLine();
+                                    try
+                                    {
+                                        int i = Convert.ToInt32(fid);
+                                        FilmSeacher.SearchById(i);
+                                        Console.WriteLine();
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine("Something went wrong.Try Again.");
+                                    }
+                                    break;
+
+                                case "date":
+                                    Console.WriteLine("Write Film's day relise: ");
+                                    string day = Console.ReadLine();
+                                    Console.WriteLine("Write Film's month relise: ");
+                                    string mon = Console.ReadLine();
+                                    Console.WriteLine("Write Film's year relise: ");
+                                    string year = Console.ReadLine();
+                                    try
+                                    {
+                                        int d = Convert.ToInt32(day);
+                                        int m = Convert.ToInt32(mon);
+                                        int y = Convert.ToInt32(year);
+                                        DateTime relisedate = new DateTime(y,m,d);
+                                        FilmSeacher.SearchByDate(relisedate);
+                                        return;
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine("Couldn't find film");
+                                    }
+                                    break;
+
+                                case "producer":
+                                    Console.WriteLine("Write producer's name ");
+                                    string prod = Console.ReadLine();
+                                    Console.WriteLine("Write producer's surname ");
+                                    string sprod = Console.ReadLine();
+                                    try
+                                    {
+                                        FilmSeacher.SearchByProd(prod,sprod);
+
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine("Couldn't find film");
+                                    }
+                                    break;
+
+                                case "genre":
+                                    Console.WriteLine("Write genre ");
+                                    string gen = Console.ReadLine();
+                                    try
+                                    {
+                                        FilmSeacher.SearchByGenre(gen);
+
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine("Couldn't find film");
+                                    }
+                                    break;
+
+                                case "company":
+                                    Console.WriteLine("Write company's name ");
+                                    string comp = Console.ReadLine();
+                                    try
+                                    {
+                                        FilmSeacher.SearchByComp(comp);
+
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine("Couldn't find film");
+                                    }
+                                    break;
+
+                                case "return":
+                                    Console.WriteLine();
+                                    break;
+                                default:
+                                    Console.WriteLine("Something went wrong. Try Again.");
+                                    Console.WriteLine();
+                                    break;
+                            }
+                        }
                         break;
                     case "finish":
-                        person = "finish";
                         break;
                     default:
                         Console.WriteLine("Something went wrong. Try Again.");
