@@ -266,15 +266,251 @@ namespace film
                                 case "G":
                                     while (method != "return")
                                     {
-                                        Console.WriteLine("What would you do?{0}If you would like to Add Genre, enter A{0}If you would like to Change Genre, enter C{0}If you would like to Delete Genre, enter D{0}If you would like to Get All Genries, enter GetAll{0}If you would like to Get Genre By Id, enter GetBy{0}If you whant to return, enter return ", Environment.NewLine);
+                                        Console.WriteLine("What would you do?{0}If you would like to Add Genre, enter A{0}If you would like to Change Genre, enter C{0}If you would like to Delete Genre, enter D{0}If you would like to Get All Genres, enter GetAll{0}If you would like to Get Genre By Id, enter GetBy{0}If you whant to return, enter return ", Environment.NewLine);
                                         method = Console.ReadLine();
-                                    }
+                                        string id;
+                                        switch (method)
+                                        {
+                                            case "A":
+                                                Console.WriteLine("Write Genre id: ");
+                                                id = Console.ReadLine();
+                                                Console.WriteLine("Write Genre's name: ");
+                                                string name = Console.ReadLine();
+                                                try
+                                                {
+                                                    int i = Convert.ToInt32(id);
+                                                    GenreManager.Add(i, name);
+                                                    Console.WriteLine();
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Something went wrong.Try Again.");
+                                                }
+                                                break;
+
+                                            case "C":
+                                                Console.WriteLine("If you whant to change id, enter id{0}If you whant to change name, enter name{0}", Environment.NewLine);
+                                                string change = Console.ReadLine();
+                                                switch (change)
+                                                {
+                                                    case "id":
+                                                        Console.Write("Write Genre's id: ");
+                                                        id = Console.ReadLine();
+                                                        Console.Write("Write new Genre's id: ");
+                                                        string newid = Console.ReadLine();
+                                                        try
+                                                        {
+                                                            int i = Convert.ToInt32(id);
+                                                            int newi = Convert.ToInt32(newid);
+                                                            GenreManager.Change(i, newi);
+                                                            Console.WriteLine();
+                                                        }
+                                                        catch
+                                                        {
+                                                            Console.WriteLine("Something went wrong.Try Again.");
+                                                        }
+                                                        break;
+                                                    case "name":
+                                                        Console.Write("Write Genre's id: ");
+                                                        id = Console.ReadLine();
+                                                        Console.Write("Write new Genre's name: ");
+                                                        string newname = Console.ReadLine();
+                                                        try
+                                                        {
+                                                            int i = Convert.ToInt32(id);
+                                                            GenreManager.ChangeName(i, newname);
+                                                            Console.WriteLine();
+                                                        }
+                                                        catch
+                                                        {
+                                                            Console.WriteLine("Something went wrong.Try Again.");
+                                                            Console.WriteLine();
+                                                        }
+                                                        break;
+                                                    default:
+                                                        Console.WriteLine("Something went wrong.Try Again.");
+                                                        Console.WriteLine();
+                                                        break;
+                                                }
+                                                break;
+
+                                            case "D":
+                                                Console.Write("Write Genre's id: ");
+                                                id = Console.ReadLine();
+                                                try
+                                                {
+                                                    int i = Convert.ToInt32(id);
+                                                    GenreManager.Delete(i);
+                                                    Console.WriteLine();
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Something went wrong.Try Again.");
+                                                    Console.WriteLine();
+                                                }
+                                                break;
+
+                                            case "GetAll":
+                                                GenreManager.All();
+                                                break;
+
+                                            case "GetBy":
+                                                Console.Write("Write Genre's id: ");
+                                                id = Console.ReadLine();
+                                                try
+                                                {
+                                                    int i = Convert.ToInt32(id);
+                                                    GenreManager.GetBy(i);
+                                                    Console.WriteLine();
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Something went wrong.Try Again.");
+                                                    Console.WriteLine();
+                                                }
+                                                break;
+
+                                            default:
+                                                Console.WriteLine("Something went wrong.Try Again.");
+                                                Console.WriteLine();
+                                                break;
+                                        }
+                                        }
                                     break;
                                 case "F":
                                     while (method != "return")
                                     {
                                         Console.WriteLine("What would you do?{0}If you would like to Add Film, enter A{0}If you would like to Change  information about Film, enter C{0}If you would like to Delete Film, enter D{0}If you would like to Get All Films, enter GetAll{0}If you would like to Get Film By Id, enter GetBy{0}If you whant to return, enter return ", Environment.NewLine);
                                         method = Console.ReadLine();
+                                        string id;
+                                        switch (method)
+                                        {
+                                            case "A":
+                                                //int id, string name, string des, int prod, int comp, int genre, int day, int mon, int year
+                                                Console.WriteLine("Write Film id: ");
+                                                id = Console.ReadLine();
+                                                Console.WriteLine("Write Film's name: ");
+                                                string name = Console.ReadLine();
+                                                Console.WriteLine("Write Film's description: ");
+                                                string desc = Console.ReadLine();
+                                                Console.WriteLine("Write id producer: ");
+                                                string prod = Console.ReadLine();
+                                                Console.WriteLine("Write id of the company: ");
+                                                string comp = Console.ReadLine();
+                                                Console.WriteLine("Write id genre: ");
+                                                string genre = Console.ReadLine();
+                                                Console.WriteLine("Write Film's day relise: ");
+                                                string day = Console.ReadLine();
+                                                Console.WriteLine("Write Film's month relise: ");
+                                                string mon = Console.ReadLine();
+                                                Console.WriteLine("Write Film's year relise: ");
+                                                string year = Console.ReadLine();
+
+                                                try
+                                                {
+                                                    int i = Convert.ToInt32(id);
+                                                    int c = Convert.ToInt32(comp);
+                                                    int p = Convert.ToInt32(prod);
+                                                    int g = Convert.ToInt32(genre);
+                                                    int d = Convert.ToInt32(day);
+                                                    int m = Convert.ToInt32(mon);
+                                                    int y = Convert.ToInt32(year);
+                                                    FilmManager.Add(i, name, desc, p, c, g, d, m, y);
+                                                    Console.WriteLine();
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Something went wrong.Try Again.");
+                                                }
+                                                break;
+
+                                            case "C":
+                                                Console.WriteLine("If you whant to change id, enter id{0}If you whant to change name, enter name{0}", Environment.NewLine);
+                                                string change = Console.ReadLine();
+                                                switch (change)
+                                                {
+                                                    case "id":
+                                                        Console.Write("Write Film's id: ");
+                                                        id = Console.ReadLine();
+                                                        Console.Write("Write new Film's id: ");
+                                                        string newid = Console.ReadLine();
+                                                        try
+                                                        {
+                                                            int i = Convert.ToInt32(id);
+                                                            int newi = Convert.ToInt32(newid);
+                                                            FilmManager.Change(i, newi);
+                                                            Console.WriteLine();
+                                                        }
+                                                        catch
+                                                        {
+                                                            Console.WriteLine("Something went wrong.Try Again.");
+                                                        }
+                                                        break;
+                                                    case "name":
+                                                        Console.Write("Write Film's id: ");
+                                                        id = Console.ReadLine();
+                                                        Console.Write("Write new Film's name: ");
+                                                        string newname = Console.ReadLine();
+                                                        try
+                                                        {
+                                                            int i = Convert.ToInt32(id);
+                                                            FilmManager.ChangeName(i, newname);
+                                                            Console.WriteLine();
+                                                        }
+                                                        catch
+                                                        {
+                                                            Console.WriteLine("Something went wrong.Try Again.");
+                                                            Console.WriteLine();
+                                                        }
+                                                        break;
+                                                    default:
+                                                        Console.WriteLine("Something went wrong.Try Again.");
+                                                        Console.WriteLine();
+                                                        break;
+                                                }
+                                                break;
+
+                                            case "D":
+                                                Console.Write("Write Film's id: ");
+                                                id = Console.ReadLine();
+                                                try
+                                                {
+                                                    int i = Convert.ToInt32(id);
+                                                    FilmManager.Delete(i);
+                                                    Console.WriteLine();
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Something went wrong.Try Again.");
+                                                    Console.WriteLine();
+                                                }
+                                                break;
+
+                                            case "GetAll":
+                                                FilmManager.All();
+                                                break;
+
+                                            case "GetBy":
+                                                Console.Write("Write Film's id: ");
+                                                id = Console.ReadLine();
+                                                try
+                                                {
+                                                    int i = Convert.ToInt32(id);
+                                                    FilmManager.GetBy(i);
+                                                    Console.WriteLine();
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Something went wrong.Try Again.");
+                                                    Console.WriteLine();
+                                                }
+                                                break;
+
+                                            default:
+                                                Console.WriteLine("Something went wrong.Try Again.");
+                                                Console.WriteLine();
+                                                break;
+                                        }
                                     }
                                     break;
                                 case "return":
