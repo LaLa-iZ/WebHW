@@ -56,6 +56,7 @@ namespace film
                                             case "D":
                                                 break;
                                             case "GetAll":
+                                                ProducerManager.All();
                                                 break;
                                             case "GetBy":
                                                 break;

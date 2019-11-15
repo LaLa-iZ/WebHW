@@ -17,5 +17,13 @@ namespace film
             }
             Console.WriteLine("This Id was already used for another Producer");
         }
+
+        public static void All()
+        {
+            for (int i = 0; i < producers.Count; ++i)
+            {
+                Console.WriteLine($"{i + 1}) {producers[i].id} {producers[i].name} {producers[i].surname}");
+            }
+        }
     }
 }
