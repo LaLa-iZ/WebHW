@@ -31,11 +31,12 @@ namespace film
                                     {
                                         Console.WriteLine("What would you do?{0}If you would like to Add Producer, enter A{0}If you would like to Change Producer, enter C{0}If you would like to Delete Producer, enter D{0}If you would like to Get All Producers, enter GetAll{0}If you would like to Get Producer By Id, enter GetBy{0}If you whant to return, enter return ", Environment.NewLine);
                                         method = Console.ReadLine();
+                                        string id;
                                         switch (method)
                                         {
                                             case "A":
                                                 Console.WriteLine("Write Producer id: ");
-                                                string id = Console.ReadLine();
+                                                id = Console.ReadLine();
                                                 Console.WriteLine("Write Producer's name: ");
                                                 string name = Console.ReadLine();
                                                 Console.WriteLine("Write Producer's surname: ");
@@ -52,6 +53,53 @@ namespace film
                                                 }
                                                 break;
                                             case "C":
+
+                                                Console.WriteLine("If you whant to change id, enter id{0}If you whant to change name, enter name{0}If you whant to change surname, enter surname{0}", Environment.NewLine);
+                                                string change = Console.ReadLine();
+                                                switch (change)
+                                                {
+                                                    case "id":
+                                                        Console.Write("Write Producer's id: ");
+                                                        id = Console.ReadLine();
+                                                        Console.Write("Write new Producer's id: ");
+                                                        string newid = Console.ReadLine();
+                                                        try
+                                                        {
+                                                            int i = Convert.ToInt32(id);
+                                                            int newi = Convert.ToInt32(newid);
+                                                            ProducerManager.Change(i, newi);
+                                                            Console.WriteLine();
+                                                        }
+                                                        catch
+                                                        {
+                                                            Console.WriteLine("Something went wrong.Try Again.");
+                                                        }
+                                                        break;
+                                                    case "name":
+                                                        Console.Write("Write Producer's id: ");
+                                                        id = Console.ReadLine();
+                                                        Console.Write("Write new Producer's name: ");
+                                                        string newname = Console.ReadLine();
+                                                        try
+                                                        {
+                                                            int i = Convert.ToInt32(id);
+                                                            ProducerManager.ChangeName(i, newname);
+                                                            Console.WriteLine();
+                                                        }
+                                                        catch
+                                                        {
+                                                            Console.WriteLine("Something went wrong.Try Again.");
+                                                        }
+                                                        break;
+                                                    case "surname":
+                                                        break;
+                                                    default:
+                                                        Console.WriteLine("Something went wrong.Try Again.");
+                                                       break;
+                                                }
+
+
+                                                
                                                 break;
                                             case "D":
                                                 break;
@@ -61,6 +109,8 @@ namespace film
                                             case "GetBy":
                                                 break;
                                             default:
+                                                Console.WriteLine("Something went wrong.Try Again.");
+                                               
                                                 break;
                                         }
 
