@@ -6,6 +6,7 @@ namespace film
     {
         static void Main(string[] args)
         {
+            Check.Filler();
             string person = "noone";
             while (person != "finish")
             {
@@ -427,7 +428,7 @@ namespace film
                                                     int d = Convert.ToInt32(day);
                                                     int m = Convert.ToInt32(mon);
                                                     int y = Convert.ToInt32(year);
-                                                    FilmManager.Add(i, name, desc, p, c, g, d, m, y);
+                                                    FilmManager.AddCh(i, name, desc, p, c, g, d, m, y);
                                                     Console.WriteLine();
                                                 }
                                                 catch

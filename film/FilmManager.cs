@@ -8,8 +8,64 @@ namespace film
     {
         public static List<Film> films = new List<Film>();
 
-        public static void Add(int id, string name, string des, int prod, int comp, int genre, int day, int mon, int year)
+        public static void AddCh(int id, string name, string des, int prod, int comp, int genre, int day, int mon, int year)
         {
+            if (ProducerManager.producers.FindIndex(x => x.id == prod) == -1)
+            {
+                Console.WriteLine("Write Producer's name: ");
+                string pname = Console.ReadLine();
+                Console.WriteLine("Write Producer's surname: ");
+                string surname = Console.ReadLine();
+                try
+                {
+                    ProducerManager.Add(id, pname, surname);
+                    Console.WriteLine();
+                }
+                catch
+                {
+                    Console.WriteLine("Something went wrong.Try Again.");
+                }
+            }
+
+            if (CompanyManager.companies.FindIndex(x => x.id == comp) == -1)
+            {
+
+                Console.WriteLine("Write Company's name: ");
+                string cname = Console.ReadLine();
+                try
+                {
+                    CompanyManager.Add(id, cname);
+                    Console.WriteLine();
+                }
+                catch
+                {
+                    Console.WriteLine("Something went wrong.Try Again.");
+                }
+               
+            }
+
+            if (GenreManager.genres.FindIndex(x => x.id == genre) == -1)
+            {
+                Console.WriteLine("Write genre ");
+                string gname = Console.ReadLine();
+                try
+                {
+                    GenreManager.Add(id, gname);
+                    Console.WriteLine();
+                }
+                catch
+                {
+                    Console.WriteLine("Something went wrong.Try Again.");
+                }
+
+            }
+
+            FilmManager.Add(id, name, des, prod, comp, genre, day, mon, year);
+
+        }
+
+        public static void Add(int id, string name, string des, int prod, int comp, int genre, int day, int mon, int year)
+        { 
             if (films.FindIndex(x => x.id == id) == -1 && ProducerManager.producers.FindIndex(x => x.id == prod) != -1 && CompanyManager.companies.FindIndex(x => x.id == comp) != -1 && GenreManager.genres.FindIndex(x => x.id == genre) != -1)
             {
                 try
