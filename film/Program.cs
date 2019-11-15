@@ -52,8 +52,8 @@ namespace film
                                                     Console.WriteLine("Something went wrong.Try Again.");
                                                 }
                                                 break;
-                                            case "C":
 
+                                            case "C":
                                                 Console.WriteLine("If you whant to change id, enter id{0}If you whant to change name, enter name{0}If you whant to change surname, enter surname{0}", Environment.NewLine);
                                                 string change = Console.ReadLine();
                                                 switch (change)
@@ -92,25 +92,63 @@ namespace film
                                                         }
                                                         break;
                                                     case "surname":
+                                                        Console.Write("Write Producer's id: ");
+                                                        id = Console.ReadLine();
+                                                        Console.Write("Write new Producer's surname: ");
+                                                        string newsurname = Console.ReadLine();
+                                                        try
+                                                        {
+                                                            int i = Convert.ToInt32(id);
+                                                            ProducerManager.ChangeName(i, newsurname);
+                                                            Console.WriteLine();
+                                                        }
+                                                        catch
+                                                        {
+                                                            Console.WriteLine("Something went wrong.Try Again.");
+                                                        }
                                                         break;
                                                     default:
                                                         Console.WriteLine("Something went wrong.Try Again.");
                                                        break;
                                                 }
-
-
+                                                break;
                                                 
-                                                break;
                                             case "D":
+                                                Console.Write("Write Producer's id: ");
+                                                id = Console.ReadLine();
+                                                try
+                                                {
+                                                    int i = Convert.ToInt32(id);
+                                                    ProducerManager.Delete(i);
+                                                    Console.WriteLine();
+                                                }
+                                                catch 
+                                                {
+                                                    Console.WriteLine("Something went wrong.Try Again.");
+                                                }
                                                 break;
+
                                             case "GetAll":
                                                 ProducerManager.All();
                                                 break;
+
                                             case "GetBy":
+                                                Console.Write("Write Producer's id: ");
+                                                id = Console.ReadLine();
+                                                try
+                                                {
+                                                    int i = Convert.ToInt32(id);
+                                                    ProducerManager.GetBy(i);
+                                                    Console.WriteLine();
+                                                }
+                                                catch
+                                                {
+                                                    Console.WriteLine("Something went wrong.Try Again.");
+                                                }
                                                 break;
+
                                             default:
                                                 Console.WriteLine("Something went wrong.Try Again.");
-                                               
                                                 break;
                                         }
 

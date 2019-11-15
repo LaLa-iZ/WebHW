@@ -54,6 +54,50 @@ namespace film
             }
         }
 
+        public static void ChangeSurame(int id, string newsurname)
+        {
+            if (producers.FindIndex(x => x.id == id) == -1)
+            {
+                Console.WriteLine("Invalid id to change");
+                return;
+            }
+            int ind = producers.FindIndex(x => x.id == id);
+            try
+            {
+                producers[ind].surname = newsurname;
+            }
+            catch
+            {
+                Console.WriteLine("Couldn't change Producer's surname");
+            }
+        }
+
+        public static void Delete(int id)
+        {
+            int ind = producers.FindIndex(x => x.id == id);
+            try
+            {
+                producers.RemoveAt(ind);
+            }
+            catch
+            {
+                Console.WriteLine("Couldn't delete Producer");
+            }
+        }
+
+        public static void GetBy(int id)
+        {
+            int i = producers.FindIndex(x => x.id == id);
+            try
+            {
+                Console.WriteLine($"{producers[i].id} {producers[i].name} {producers[i].surname}");
+            }
+            catch
+            {
+                Console.WriteLine("Couldn't get element");
+            }
+        }
+
         public static void All()
         {
             for (int i = 0; i < producers.Count; ++i)
